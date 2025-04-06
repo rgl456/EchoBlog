@@ -1,5 +1,6 @@
 package com.project.BlogApplication.repository;
 
+import com.project.BlogApplication.entity.Category;
 import com.project.BlogApplication.entity.Post;
 import com.project.BlogApplication.entity.PostStatus;
 import com.project.BlogApplication.entity.User;
@@ -23,4 +24,6 @@ public interface PostRepository extends JpaRepository<Post, UUID> {
     List<Post> findAllFiltered(@Param("categoryId") UUID categoryId, @Param("tagId") UUID tagId);
 
     List<Post> findAllByAuthorAndStatus(User author, PostStatus status);
+
+    List<Post> findAllByCategory(Category category);
 }

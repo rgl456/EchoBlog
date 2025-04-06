@@ -109,4 +109,13 @@ public class PostService {
         Post post = postRepository.findById(id).orElseThrow(()-> new IllegalArgumentException("Post not found"));
         postRepository.delete(post);
     }
+
+    public List<PostResponseDTO> getPostByCategoryId(UUID categoryId) {
+        Category category = categoryRepository.findById(categoryId).orElseThrow(()-> new CategoryNotFoundException("Category not found"));
+        List<Post> posts = postRepository.findAllByCategory(category);
+        if(posts.isEmpty()){
+            throw new CategoryNotFoundException("No posts found for this category");
+        }
+        return posts.stream().map(post -> new PostMapper().toDTO(post)).collect(Collectors.toList());
+    }
 }

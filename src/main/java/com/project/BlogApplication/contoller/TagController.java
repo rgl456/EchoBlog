@@ -9,7 +9,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Set;
+import java.util.UUID;
 
 @RestController
 @RequestMapping("/api/v1/tags")
@@ -28,6 +28,10 @@ public class TagController {
         return ResponseEntity.ok(tagService.getAllTags());
     }
 
-
+    @DeleteMapping("/{id}")
+    public ResponseEntity<String> deleteTag(@PathVariable UUID id) {
+        tagService.deleteTag(id);
+        return new ResponseEntity<>("Tag deleted successfully", HttpStatus.NO_CONTENT);
+    }
 
 }

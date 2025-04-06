@@ -12,6 +12,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Set;
+import java.util.UUID;
 import java.util.stream.Collectors;
 
 @Service
@@ -45,4 +46,12 @@ public class TagService {
                 .collect(Collectors.toList());
     }
 
+    public void deleteTag(UUID id) {
+        Tag tag = tagRepository.findById(id).orElseThrow(()-> new RuntimeException("Tag not found with id: " + id));
+        if(tag.getPosts().isEmpty()) {
+            tagRepository.delete(tag);
+        } else {
+            throw new RuntimeException("Tag cannot be deleted as it is associated with existing posts.");
+        }
+    }
 }

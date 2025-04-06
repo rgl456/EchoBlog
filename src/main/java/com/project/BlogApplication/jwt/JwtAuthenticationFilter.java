@@ -57,7 +57,7 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
                 SecurityContextHolder.getContext().setAuthentication(authToken);
                 if(userDetails instanceof BlogUserDetails){
                     User user = ((BlogUserDetails)userDetails).getUser();
-                    request.setAttribute("userID",user.getId());
+                    request.setAttribute("userId",user.getId());
                 }
                 System.out.println("request = "+request.getRequestURL());
                 System.out.println("Method: " + request.getMethod());

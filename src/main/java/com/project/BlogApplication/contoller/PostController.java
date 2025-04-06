@@ -2,6 +2,7 @@ package com.project.BlogApplication.contoller;
 
 import com.project.BlogApplication.dto.PostRequestDTO;
 import com.project.BlogApplication.dto.PostResponseDTO;
+import com.project.BlogApplication.dto.UpdatePostRequestDTO;
 import com.project.BlogApplication.service.PostService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -32,6 +33,17 @@ public class PostController {
     @PostMapping
     public ResponseEntity<PostResponseDTO> createPost(@RequestBody PostRequestDTO postRequestDTO, @RequestAttribute("userId") UUID userId){
         return new ResponseEntity<>(postService.createPost(postRequestDTO,userId), HttpStatus.CREATED);
+    }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<PostResponseDTO> updatePost(@PathVariable UUID id, @RequestBody UpdatePostRequestDTO updatePostRequestDTO){
+        return ResponseEntity.ok(postService.updatePost(id,updatePostRequestDTO));
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<String> deletePost(@PathVariable UUID id){
+        postService.deletePost(id);
+        return new ResponseEntity<>("Post deleted successfully",HttpStatus.NO_CONTENT);
     }
 
 }

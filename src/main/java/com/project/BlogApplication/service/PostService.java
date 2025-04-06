@@ -3,6 +3,7 @@ package com.project.BlogApplication.service;
 import com.project.BlogApplication.Exception.CategoryNotFoundException;
 import com.project.BlogApplication.dto.PostRequestDTO;
 import com.project.BlogApplication.dto.PostResponseDTO;
+import com.project.BlogApplication.dto.UpdatePostRequestDTO;
 import com.project.BlogApplication.entity.*;
 import com.project.BlogApplication.mapper.PostMapper;
 import com.project.BlogApplication.repository.CategoryRepository;
@@ -82,4 +83,30 @@ public class PostService {
         return (int) Math.ceil((double)wordCount/ WORDS_PER_MINUTE);
     }
 
+    public PostResponseDTO updatePost(UUID id, UpdatePostRequestDTO updatePostRequestDTO) {
+        Post existingPost = postRepository.findById(id).orElseThrow(()-> new IllegalArgumentException("Post not found"));
+        existingPost.setTitle(updatePostRequestDTO.getTitle());
+        existingPost.setContent(updatePostRequestDTO.getContent());
+        existingPost.setReadingTime(calculateReadingTime(updatePostRequestDTO.getContent()));
+        if(!updatePostRequestDTO.getCategoryId().equals(existingPost.getCategory().getId())){
+            Category newCategory = categoryService.getById(updatePostRequestDTO.getCategoryId());
+            existingPost.setCategory(newCategory);
+        }
+
+        Set<UUID> updatedTagIds = updatePostRequestDTO.getTagIds();
+        Set<UUID> existingTagIds = existingPost.getTags().stream().map(Tag::getId).collect(Collectors.toSet());
+        if(!updatedTagIds.equals(existingTagIds)){
+            List<Tag> newTags = tagService.getAllTagsByIds(updatePostRequestDTO.getTagIds());
+            existingPost.setTags(new HashSet<>(newTags));
+        }
+        existingPost.setStatus(updatePostRequestDTO.getStatus());
+        existingPost.setUpdatedAt(LocalDateTime.now());
+        Post updatedPost = postRepository.save(existingPost);
+        return new PostMapper().toDTO(updatedPost);
+    }
+
+    public void deletePost(UUID id) {
+        Post post = postRepository.findById(id).orElseThrow(()-> new IllegalArgumentException("Post not found"));
+        postRepository.delete(post);
+    }
 }

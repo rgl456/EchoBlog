@@ -59,7 +59,10 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
                     User user = ((BlogUserDetails)userDetails).getUser();
                     request.setAttribute("userID",user.getId());
                 }
-                System.out.println("request = "+request);
+                System.out.println("request = "+request.getRequestURL());
+                System.out.println("Method: " + request.getMethod());
+                System.out.println("Path: " + request.getServletPath());
+
             }
         }
 

@@ -6,6 +6,7 @@ import com.project.BlogApplication.entity.PostStatus;
 import com.project.BlogApplication.entity.Tag;
 import com.project.BlogApplication.mapper.TagMapper;
 import com.project.BlogApplication.repository.TagRepository;
+import jakarta.persistence.EntityNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
@@ -53,5 +54,13 @@ public class TagService {
         } else {
             throw new RuntimeException("Tag cannot be deleted as it is associated with existing posts.");
         }
+    }
+
+    public List<Tag> getAllTagsByIds(Set<UUID> ids){
+        List<Tag> foundedTags = tagRepository.findAllById(ids);
+        if(foundedTags.size() != ids.size()){
+            throw new EntityNotFoundException("Some tags not found");
+        }
+        return foundedTags;
     }
 }

@@ -60,4 +60,9 @@ public class CategoryService {
         }
     }
 
+    public Category getById(UUID id) {
+        return categoryRepository.findById(id)
+                .orElseThrow(() -> new CategoryNotFoundException("Category with id " + id + " not found"));
+    }
+
 }

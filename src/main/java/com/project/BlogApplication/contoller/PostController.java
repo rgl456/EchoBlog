@@ -1,8 +1,10 @@
 package com.project.BlogApplication.contoller;
 
+import com.project.BlogApplication.dto.PostRequestDTO;
 import com.project.BlogApplication.dto.PostResponseDTO;
 import com.project.BlogApplication.service.PostService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -25,6 +27,11 @@ public class PostController {
     public ResponseEntity<List<PostResponseDTO>> getAllDraftPosts(@RequestAttribute ("userId") UUID userId){
         return ResponseEntity.ok(postService.getAllDraftPosts(userId));
 
+    }
+
+    @PostMapping
+    public ResponseEntity<PostResponseDTO> createPost(@RequestBody PostRequestDTO postRequestDTO, @RequestAttribute("userId") UUID userId){
+        return new ResponseEntity<>(postService.createPost(postRequestDTO,userId), HttpStatus.CREATED);
     }
 
 }

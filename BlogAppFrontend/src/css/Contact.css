@@ -1,0 +1,123 @@
+/* Contact Container */
+.contact-container {
+    padding: 50px 30px;
+    background-color: var(--background-color);
+    color: var(--text-color);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+    font-family: 'Inter', sans-serif;
+    width: 100%;
+}
+
+/* Title */
+.contact-title {
+    font-size: 2.4rem;
+    font-weight: 700;
+    color: var(--primary-color);
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    text-align: center;
+}
+
+/* Description */
+.contact-description {
+    font-size: 1.1rem;
+    color: #b0b0b0;
+    text-align: center;
+    margin-bottom: 40px;
+    max-width: 800px;
+    line-height: 1.8;
+}
+
+/* Contact Form */
+.contact-form {
+    background-color: var(--card-background-color);
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    width: 100%;
+    max-width: 600px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+/* Form Group */
+.form-grp {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-grp label {
+    font-size: 1rem;
+    font-weight: 500;
+    color: var(--secondary-text-color);
+    margin-bottom: 10px;
+}
+
+.form-grp input , .form-grp textarea {
+    padding: 12px 15px;
+    border: 1px solid #3a3a5c;
+    border-radius: 6px;
+    background-color: var(--background-color);
+    color: var(--text-color);
+    font-size: 1rem;
+    outline: none;
+    transition: border-color 0.3s ease, background-color 0.3s ease;
+}
+
+
+.form-grp input:focus,
+.form-grp textarea:focus {
+    border-color: #00d4ff;
+    background-color: var(--card-background-color);
+}
+
+/* Contact Button */
+.contact-button {
+    background-color: #00d4ff;
+    color: #ffffff;
+    padding: 14px 20px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.contact-button:hover {
+    background-color: #00a3cc;
+    transform: scale(1.05);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .contact-container {
+        padding: 30px 20px;
+    }
+
+    .contact-title {
+        font-size: 2.2rem;
+    }
+
+    .contact-description {
+        font-size: 1rem;
+        margin-bottom: 30px;
+    }
+
+    .contact-form {
+        padding: 20px;
+    }
+
+    .contact-button {
+        padding: 12px 16px;
+        font-size: 1rem;
+    }
+}

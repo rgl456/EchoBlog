@@ -1,0 +1,131 @@
+/* Main Container */
+.create-tag-container {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    padding: 20px;
+    background-color: var(--card-background-color);
+    color: var(--text-color);
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    max-width: 800px;
+    margin: 20px auto;
+    font-family: 'Inter', sans-serif;
+}
+
+/* Add Tag Section */
+.add-tag-container {
+    padding: 20px;
+    background-color: var(--background-color);
+    border-radius: 8px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+.add-tag-container h2 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--primary-color);
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+.tag-input-container {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.tag-input-container input {
+    flex: 1;
+    padding: 10px;
+    border: 1px solid var(--secondary-text-color);
+    border-radius: 4px;
+    background-color: var(--background-color);
+    color: var(--text-color);
+    font-size: 1rem;
+    outline: none;
+    transition: border-color 0.3s ease, background-color 0.3s ease;
+}
+
+.tag-input-container input:focus {
+    border-color: var(--primary-color);
+    background-color: var(--card-background-color);
+}
+
+.add-tag-button {
+    background-color: var(--primary-color);
+    color: #ffffff;
+    padding: 10px 15px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.add-tag-button:hover {
+    background-color: #00a3cc;
+    transform: scale(1.05);
+}
+
+/* Message */
+.message {
+    margin-top: 10px;
+    font-size: 0.9rem;
+    color: var(--primary-color);
+    text-align: center;
+}
+
+/* Tag List Section */
+.tag-list-container {
+    padding: 20px;
+    background-color: var(--background-color);
+    border-radius: 8px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+.tag-list-container h2 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--primary-color);
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+.tag-list {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.tag-item {
+    background-color: var(--card-background-color);
+    padding: 15px;
+    border-radius: 8px;
+    border: 1px solid var(--secondary-text-color);
+    color: var(--text-color);
+    font-size: 0.9rem;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.delete-tag-button {
+    background-color: #ff4d4d;
+    color: #ffffff;
+    padding: 8px 12px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    margin-top: 10px;
+}
+
+.delete-tag-button:hover {
+    background-color: #e60000;
+    transform: scale(1.05);
+}

@@ -9,7 +9,7 @@ public class PostMapper {
     public PostResponseDTO toDTO(Post post) {
         PostResponseDTO postResponseDTO = new PostResponseDTO();
         postResponseDTO.setTitle(post.getTitle());
-        postResponseDTO.setAuthor(new AuthorDTO(post.getAuthor().getId(), post.getAuthor().getName()));
+        postResponseDTO.setAuthor(new AuthorDTO(post.getAuthor().getId(), post.getAuthor().getName(), post.getAuthor().getEmail()));
         postResponseDTO.setId(post.getId());
         postResponseDTO.setContent(post.getContent());
         postResponseDTO.setStatus(post.getStatus());

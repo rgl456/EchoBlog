@@ -26,4 +26,6 @@ public interface PostRepository extends JpaRepository<Post, UUID> {
     List<Post> findAllByAuthorAndStatus(User author, PostStatus status);
 
     List<Post> findAllByCategory(Category category);
+
+    List<Post> findAllByStatus(PostStatus postStatus);
 }

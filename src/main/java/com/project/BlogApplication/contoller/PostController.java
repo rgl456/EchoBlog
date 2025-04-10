@@ -51,4 +51,9 @@ public class PostController {
         return ResponseEntity.ok(postService.getPostByCategoryId(categoryId));
     }
 
+    @GetMapping("/published")
+    public ResponseEntity<List<PostResponseDTO>> getPublishedPosts(){
+        return ResponseEntity.ok(postService.getPublishedPosts());
+    }
+
 }

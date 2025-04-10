@@ -118,4 +118,12 @@ public class PostService {
         }
         return posts.stream().map(post -> new PostMapper().toDTO(post)).collect(Collectors.toList());
     }
+
+    public List<PostResponseDTO> getPublishedPosts() {
+        List<Post> posts = postRepository.findAllByStatus(PostStatus.PUBLISHED);
+        if(posts.isEmpty()){
+            throw new CategoryNotFoundException("No published posts found");
+        }
+        return posts.stream().map(post -> new PostMapper().toDTO(post)).collect(Collectors.toList());
+    }
 }

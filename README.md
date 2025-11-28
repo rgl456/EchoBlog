@@ -188,7 +188,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## Contact
 
-Your Name - [Ragul S](mailto:ragul7690@gmail.com)
+Email - [ragul7690@gmail.com](mailto:ragul7690@gmail.com)
 
 Project Link: [https://github.com/rgl456/echoblog](https://github.com/rgl456/echoblog)
 

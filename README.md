@@ -72,7 +72,7 @@ DELETE /api/v1/tags/{id} - Delete tag
 
 1. Clone the repository
 ```bash
-git clone https://github.com/yourusername/echoblog.git
+git clone https://github.com/rgl456/echoblog.git
 cd echoblog
 ```
 
